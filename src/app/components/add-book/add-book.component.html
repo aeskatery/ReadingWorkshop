@@ -1,0 +1,60 @@
+<form (ngSubmit)="addBook()" #form="ngForm">
+  <div class="mb-3, form-floating">
+    <input
+      type="text"
+      id="nickName"
+      class="form-control"
+      name="nickName"
+      aria-describedby="emailHelp"
+      placeholder="Автор"
+      [(ngModel)]="BookDto.nickName"
+      required
+      #nickName="ngModel"
+    >
+    <label for="nickName" class="form-label">NickName</label>
+  </div>
+  <div class="mb-3, form-floating">
+    <input
+      type="text"
+      id="title"
+      class="form-control"
+      name="titile"
+      [(ngModel)]="BookDto.title"
+      required
+      #title="ngModel"
+    >
+    <label for="title" class="form-label">Название</label>
+
+  </div>
+  <div class="mb-3, form-floating">
+    <input
+      type="text"
+      id="img"
+      class="form-control"
+      name="img"
+      [(ngModel)]="BookDto.img"
+      required
+      #img="ngModel"
+    >
+    <label for="title" class="form-label">Адрес картинки</label>
+  </div>
+  <div class="mb-3, form-floating">
+    <textarea
+      type="text"
+      id="description"
+      class="form-control"
+      name="description"
+      [(ngModel)]="BookDto.description"
+      required
+      #description="ngModel"
+    ></textarea>
+    <label for="description" class="form-label">Описание</label>
+  </div>
+  <button
+    class="w-100 btn btn-lg btn-primary"
+    type="submit"
+    [disabled]="!form.form.valid"
+  >
+    Добавить
+  </button>
+</form>
