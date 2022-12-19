@@ -12,6 +12,8 @@ import {BooksService} from "./services/books.service";
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { BookComponent } from './components/book/book.component';
 import {FormsModule} from "@angular/forms";
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {FormsModule} from "@angular/forms";
     AboutComponent,
     NotfoundComponent,
     AddBookComponent,
-    BookComponent
+    BookComponent,
+    RegisterComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,

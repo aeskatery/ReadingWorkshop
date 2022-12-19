@@ -6,20 +6,20 @@ export const books: IBooks[] = [
     nickName: 'abra_kadabra',
     title: 'Смелость',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure maxime, pariatur possimus sunt vitae voluptas?',
-    img: '././img/courage.jpeg'
+    img: 'assets/img/courage.jpeg'
   },
   {
     id: 2,
     nickName: 'piecemeal',
     title: 'Страх',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure maxime, pariatur possimus sunt vitae voluptas?',
-    img: './img/fear.jpeg'
+    img: 'assets/img/fear.jpeg'
   },
   {
     id: 3,
     nickName: 'optimist',
     title: 'Счастье',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure maxime, pariatur possimus sunt vitae voluptas?',
-    img: './img/happiness.jpeg'
+    img: 'assets/img/happines.jpeg'
   }
 ]

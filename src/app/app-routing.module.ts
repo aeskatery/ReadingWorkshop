@@ -6,6 +6,8 @@ import {AboutComponent} from "./components/about/about.component";
 import {NotfoundComponent} from "./components/notfound/notfound.component";
 import {AddBookComponent} from "./components/add-book/add-book.component";
 import {BookComponent} from "./components/book/book.component";
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,6 +15,8 @@ const routes: Routes = [
   {path: 'books/:id', component:BookComponent},
   {path: 'add_book', component:AddBookComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: '**', component: NotfoundComponent},
 ];
 
