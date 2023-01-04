@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IUsers } from 'src/app/models/IUsers';
+import {RegisterService} from "../../services/register.service";
 
 @Component({
   selector: 'app-register',
@@ -7,10 +8,9 @@ import { IUsers } from 'src/app/models/IUsers';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   user: IUsers= {
     username: '',
-    userSurename: '',
+    userSurname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     nickName: ''
   };
 
-  constructor() { }
+  constructor(private registerService: RegisterService) { }
 
   submitRegister() {
     console.log(this.user)
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.user);
+    this.registerService.registerUser(this.user)
   }
 
 }

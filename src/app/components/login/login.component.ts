@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IUsersDTO } from 'src/app/models/IUserDTO';
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-login',
@@ -7,43 +8,25 @@ import { IUsersDTO } from 'src/app/models/IUserDTO';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  UserDto: IUsersDTO = {
+  userDto: IUsersDTO = {
     email: '',
     password: ''
   };
-  isLoggedIn = false;
-  username = '';
-  constructor(
 
-  ) { }
+  isLoggedIn = false;
+
+  constructor(private loginService: LoginService) { }
 
   submitLogin() {
-    const savedDataAboutUser = {
-      email: this.UserDto.email,
-    };
-    const userStr = JSON.stringify(savedDataAboutUser);
-    console.log(userStr)
-    localStorage.setItem('user', userStr);
-
-    this.username = this.UserDto.email
-
-    if (userStr) {
-      const user = JSON.parse(userStr);
-      console.log(user);
-
-      if (user) {
-        this.isLoggedIn = true;
-      }
-    } else {
-      this.isLoggedIn = false;
-    }
+    // @ts-ignore
+    this.loginService.loginUser(this.userDto);
   }
   logout() {
-    localStorage.clear();
+    // localStorage.clear();
     this.isLoggedIn = false;
   }
   ngOnInit(): void {
-
+    // this.loginService.loginUser(this.userDto)
   }
 
 }

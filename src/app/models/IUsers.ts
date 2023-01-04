@@ -1,6 +1,6 @@
 export interface IUsers {
     username: string;
-    userSurename: string;
+    userSurname: string;
     email: string;
     nickName: string;
     birthday: string;
