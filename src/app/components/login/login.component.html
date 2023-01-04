@@ -2,17 +2,17 @@
 <div class="contanier">
     <form (ngSubmit)="submitLogin()" #form="ngForm">
         <div>
-            <input 
+            <input
             type="email"
             id="email"
             class="form-control"
             name="email"
             placeholder="email@email.ru"
-            [(ngModel)]="UserDto.email"
+            [(ngModel)]="userDto.email"
             required="email"
             #email="ngModel"
             >
-            <label for="email" class="form-label">Адрес электроной почти</label>
+            <label for="email" class="form-label">Адрес электроной почты</label>
             <div *ngIf="(email.invalid && email.touched) || email.dirty">
                 <div class="alert alert-warning" *ngIf="email.errors?.['required']">
                   Email обязательно
@@ -28,13 +28,12 @@
               id="password"
               class="form-control"
               name="password"
-              minlength="10"
-              [(ngModel)]="UserDto.password"
+              [(ngModel)]="userDto.password"
               required
               #password="ngModel"
             >
             <label for="password" class="form-label">Пароль</label>
-      
+
             <div *ngIf="(password.invalid && password.touched) || password.dirty">
               <div class="alert alert-warning" *ngIf="password.errors?.['required']">
                  Пароль обязательно
@@ -47,13 +46,12 @@
         <button
         type="submit"
         [disabled]="!form.form.valid"
-  
+
         *ngIf="!isLoggedIn; else loggedIn"
       >
         Авторизация
       </button>
       <ng-template #loggedIn>
-        <!-- <p><i>Пользователь: </i>{{username}}</p> -->
         <button type="button" class="btn btn-danger" (click)="logout()">Выйти</button>
       </ng-template>
     </form>

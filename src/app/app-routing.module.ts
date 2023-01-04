@@ -8,11 +8,15 @@ import {AddBookComponent} from "./components/add-book/add-book.component";
 import {BookComponent} from "./components/book/book.component";
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import {UsersComponent} from "./components/users/users.component";
+import {UserComponent} from "./components/user/user.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'books', component: BooksComponent},
   {path: 'books/:id', component:BookComponent},
+  {path: 'users', component:UsersComponent},
+  {path: 'users/:nickname', component:UserComponent},
   {path: 'add_book', component:AddBookComponent},
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent},
