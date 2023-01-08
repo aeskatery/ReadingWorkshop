@@ -19,6 +19,8 @@ export class UserComponent implements OnInit {
     gender: '',
     password: '',
     confirmPassword: '',
+    img: '',
+    desc: ''
   }
 
   constructor(private activatedRoute: ActivatedRoute, private usersService: UsersService) {
@@ -33,7 +35,11 @@ export class UserComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.nick = params.get('nickname');
     });
+
     this.userDetail = this.usersService.getUserByNickname(this.nick)
   }
 
+  editUser(): void {
+
+  }
 }

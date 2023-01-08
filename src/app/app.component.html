@@ -1,19 +1,24 @@
 <div class="container">
-  <header
-    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-body">
+<!--  <header-->
+<!--    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-body">-->
+<!--    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">-->
+<!--      <li><a routerLink="" class="nav-link px-2 link-secondary">Главная страница</a></li>-->
+<!--      <li><a routerLink="books" class="nav-link px-2 link-secondary">Книги</a></li>-->
+<!--      <li><a routerLink="add_book" class="nav-link px-2 link-secondary">Добавить книгу</a></li>-->
+<!--      <li><a routerLink="about" class="nav-link px-2 link-secondary">О нас</a></li>-->
+<!--    </ul>-->
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a routerLink="" class="nav-link px-2 link-secondary">Главная страница</a></li>
-      <li><a routerLink="books" class="nav-link px-2 link-secondary">Книги</a></li>
-      <li><a routerLink="add_book" class="nav-link px-2 link-secondary">Добавить книгу</a></li>
-      <li><a routerLink="about" class="nav-link px-2 link-secondary">О нас</a></li>
-    </ul>
+<!--    <div *ngIf="!isLoggedIn" class="col-md-5 text-end">-->
+<!--      <a  routerLink="login" type="button" class="btn btn-outline-primary me-2">Войти</a>-->
+<!--      <a routerLink="register" type="button" class="btn btn-primary">Зарегистрироваться</a>-->
+<!--    </div>-->
+<!--    <div *ngIf="isLoggedIn" class="col-md-5 text-end">-->
+<!--      <a routerLink="users/{{username}}" type="button" class="btn btn-outline-primary me-2">Личный кабинет</a>-->
+<!--      <button type="button" class="btn btn-danger" (click)="logout()">Выйти</button>-->
+<!--    </div>-->
 
-    <div class="col-md-5 text-end">
-      <a routerLink="login" type="button" class="btn btn-outline-primary me-2">Войти</a>
-      <a routerLink="register" type="button" class="btn btn-primary">Зарегистрироваться</a>
-    </div>
-  </header>
+<!--    <h1>{{username}}</h1>-->
+<!--  </header>-->
   <main class="container">
     <router-outlet></router-outlet>
   </main>

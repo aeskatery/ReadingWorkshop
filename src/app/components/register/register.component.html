@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="form-floating">
@@ -124,6 +125,21 @@
       </select>
       <label for="gender" class="form-label" >Пол</label>
     </div>
+
+    <div class="form-floating">
+      <input
+        type="text"
+        id="img"
+        class="form-control"
+        name="userSureName"
+        placeholder="Введите фамилию"
+        [(ngModel)]="user.img"
+        #img="ngModel"
+        required
+      >
+      <label for="img" class="form-label">Картинка</label>
+    </div>
+
 
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
   </form>

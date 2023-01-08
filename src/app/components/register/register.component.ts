@@ -16,7 +16,9 @@ export class RegisterComponent implements OnInit {
     confirmPassword: '',
     birthday: '',
     gender: '',
-    nickName: ''
+    nickName: '',
+    img: '',
+    desc: ''
   };
 
   constructor(private registerService: RegisterService) { }

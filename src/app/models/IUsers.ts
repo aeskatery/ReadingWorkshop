@@ -7,4 +7,6 @@ export interface IUsers {
     gender: string;
     password: string;
     confirmPassword: string;
+    img: string;
+    desc: string;
 }

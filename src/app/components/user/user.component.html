@@ -1,3 +1,23 @@
-<p>user works!</p>
+<app-header></app-header>
+<div class="user_detail">
+  <div class="img_user" *ngIf="userDetail.img == '', else userImg">
+    <img src="././assets/img/nothing.png" alt="">
+  </div>
+  <ng-template #userImg>
+    <div class="img_user">
+      <img [src]="userDetail.img" alt="">
+    </div>
+  </ng-template>
 
-{{userDetail.nickName}}
+  <div class="data_user">
+    <p><b>Никнэйм: </b>{{userDetail.nickName}}</p>
+    <p><b>Описание:</b></p>
+  </div>
+
+</div>
+<ul>
+  <li>Мои книги</li>
+  <li>Закладки</li>
+  <li>Хочу прочесть</li>
+  <li>Избраное</li>
+</ul>
