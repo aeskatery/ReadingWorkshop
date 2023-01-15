@@ -1,0 +1,15 @@
+.button_add_1 {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  height: 30px;
+  background-color: white;
+  margin-top: 20px;
+}
+
+.button_add_2 {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  height: 30px;
+  background-color: white;
+  margin-left: 20px;
+}

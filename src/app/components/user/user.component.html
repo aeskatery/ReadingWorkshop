@@ -10,14 +10,117 @@
   </ng-template>
 
   <div class="data_user">
-    <p><b>Никнэйм: </b>{{userDetail.nickName}}</p>
-    <p><b>Описание:</b></p>
+    <p class="form-control"><b>Никнэйм: </b>{{userDetail.nickName}}</p>
+    <p class="form-control"><b>Почта: </b>{{userDetail.email}}</p>
+    <p class="form-control"><b>Имя: </b>{{userDetail.username}}</p>
+    <p class="form-control"><b>Фамилия: </b>{{userDetail.userSurname}}</p>
+    <p class="form-control"><b>День рождения: </b>{{userDetail.birthday}}</p>
+    <p class="form-control"><b>Описание: </b>{{userDetail.desc}}</p>
   </div>
 
+  <div *ngIf="isEdit" class="edit">
+    <form>
+      <div>
+        <input
+          type="text" id="nickname"
+          class="form-control"
+          name="nickname"
+          placeholder="nickname"
+          [(ngModel)]="userDetail.nickName"
+          value="{{userDetail.nickName}}">
+      </div>
+      <div class="field">
+        <input
+          disabled type="text"
+          id="email" class="form-control"
+          name="email"
+          placeholder="nickname"
+          [(ngModel)]="userDetail.email"
+          value="{{userDetail.email}}">
+       </div>
+      <div class="field">
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          name="username"
+          placeholder="имя"
+          [(ngModel)]="userDetail.username"
+          value="{{userDetail.username}}">
+       </div>
+      <div class="field">
+        <input
+          type="text"
+          id="userSurname"
+          class="form-control"
+          name="userSurname"
+          placeholder="фамилия"
+          [(ngModel)]="userDetail.userSurname"
+          value="{{userDetail.userSurname}}">
+       </div>
+      <div class="field">
+        <input
+          type="text"
+          id="birthday"
+          class="form-control"
+          name="birthday"
+          placeholder="дата рождения"
+          [(ngModel)]="userDetail.birthday"
+          value="{{userDetail.birthday}}">
+       </div>
+      <div class="field">
+        <textarea
+          type="text"
+          id="desc"
+          class="form-control"
+          name="desc"
+          placeholder="описание"
+          [(ngModel)]="userDetail.desc"
+          value="{{userDetail.desc}}">
+        </textarea>
+       </div>
+    </form>
+  </div>
+
+  <div *ngIf="!isEdit, else saveIt">
+    <button type="button" class="button_1" (click)="editUser()">Редактировать</button>
+  </div>
+  <ng-template #saveIt>
+    <button type="button" class="button_2" (click)="saveUser()">Сохранить</button>
+    <button type="button" class="button_3" (click)="cancelEdit()">Отменить</button>
+  </ng-template>
 </div>
-<ul>
-  <li>Мои книги</li>
-  <li>Закладки</li>
-  <li>Хочу прочесть</li>
-  <li>Избраное</li>
-</ul>
+
+<div class="myBook">
+  <button class="accordion-button" (click)="seeMyBook()">Мои книги</button>
+  <li *ngIf="myBook">
+    <ul *ngFor="let book of userDetail.attributes.myBooks">
+      <li>{{book}}</li>
+    </ul>
+  </li>
+</div>
+
+<div class="bookmark">
+  <button class="accordion-button" (click)="seeMyBookmark()">Закладки</button>
+  <li *ngIf="myBookmark">
+    <ul *ngFor="let bookmarks of userDetail.attributes.bookmarks">
+      <li>{{bookmarks}}</li>
+    </ul>
+  </li>
+</div>
+
+<!--    <button class="according-button" (click)="seeMyWantRead()">Хочу прочитать</button>-->
+<!--    <li *ngIf="myWantRead">-->
+<!--      <ul *ngFor="let wantRead of userDetail.attributes.wantRead">-->
+<!--        <li>{{wantRead}}</li>-->
+<!--      </ul>-->
+<!--    </li>-->
+
+<div class="favorites">
+  <button class="accordion-button" (click)="seeMyFavorites()">Избранное</button>
+  <li *ngIf="myFavorites">
+    <ul *ngFor="let favorites of userDetail.attributes.favorites">
+      <li>{{favorites}}</li>
+    </ul>
+  </li>
+</div>

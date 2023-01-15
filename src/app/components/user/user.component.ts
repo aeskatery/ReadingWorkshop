@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UsersService} from "../../services/users.service";
 import {IUsers} from "../../models/IUsers";
+import {IUserDetails} from "../../models/IUserDetails";
 
 @Component({
   selector: 'app-user',
@@ -20,8 +21,22 @@ export class UserComponent implements OnInit {
     password: '',
     confirmPassword: '',
     img: '',
-    desc: ''
+    desc: '',
+    attributes: {
+      myBooks: [''],
+      bookmarks: [''],
+      wantRead: [''],
+      favorites: ['']
+    }
   }
+
+  userWithAttr: IUserDetails | undefined;
+
+  isEdit = false;
+  myBook = false;
+  myBookmark = false;
+  // myWantRead = false;
+  myFavorites = false;
 
   constructor(private activatedRoute: ActivatedRoute, private usersService: UsersService) {
   }
@@ -40,6 +55,31 @@ export class UserComponent implements OnInit {
   }
 
   editUser(): void {
+    this.isEdit = !this.isEdit;
+  }
 
+  saveUser(): void {
+    this.isEdit = !this.isEdit;
+    this.usersService.saveUser(this.userDetail)
+  }
+
+  cancelEdit(): void {
+    this.isEdit = !this.isEdit;
+  }
+
+  seeMyBook(): void {
+    this.myBook = !this.myBook
+  }
+
+  seeMyBookmark(): void {
+    this.myBookmark = !this.myBookmark
+  }
+
+  // seeMyWantRead(): void {
+  //   this.myWantRead = !this.myWantRead
+  // }
+
+  seeMyFavorites(): void {
+    this.myFavorites = !this.myFavorites
   }
 }

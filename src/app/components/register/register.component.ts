@@ -18,7 +18,13 @@ export class RegisterComponent implements OnInit {
     gender: '',
     nickName: '',
     img: '',
-    desc: ''
+    desc: '',
+    attributes: {
+      myBooks: [''],
+      bookmarks: [''],
+      wantRead: [''],
+      favorites: ['']
+    }
   };
 
   constructor(private registerService: RegisterService) { }

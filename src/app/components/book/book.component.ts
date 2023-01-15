@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { BooksService } from "../../services/books.service";
 import {IBooks} from "../../models/IBooks";
+import {UsersService} from "../../services/users.service";
+import {IUsers} from "../../models/IUsers";
 
 @Component({
   selector: 'app-book',
@@ -18,10 +20,14 @@ export class BookComponent implements OnInit {
     img : 'нет картинки'
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private location: Location, private bookService: BooksService) { }
+  user: IUsers | undefined;
+
+  constructor(private activatedRoute: ActivatedRoute, private location: Location, private bookService: BooksService,
+              private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.getBook();
+    this.getCurrentUser(); // пока получаем первого пользователя из sessionStorage
   }
 
   // @ts-ignore
@@ -32,4 +38,21 @@ export class BookComponent implements OnInit {
     this.bookDetail =  this.bookService.getBooksById(id);
   }
 
+  addBookToBookmarksUser(): void {
+    this.user?.attributes.bookmarks.push(this.bookDetail.title)
+    // @ts-ignore
+    this.usersService.saveUser(this.user)
+  }
+
+  addBookToFavoritesUser(): void {
+    this.user?.attributes.favorites.push(this.bookDetail.title)
+    // @ts-ignore
+    this.usersService.saveUser(this.user)
+  }
+
+  // @ts-ignore
+  getCurrentUser(): IUsers {
+    let nickname = sessionStorage.key(0);
+    this.user = this.usersService.getUserByNickname(nickname);
+  }
 }

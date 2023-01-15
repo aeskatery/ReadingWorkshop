@@ -13,4 +13,9 @@ export class UsersService {
       // @ts-ignore
     return JSON.parse(sessionStorage.getItem(nick));
   }
+
+  saveUser(user: IUsers) {
+    localStorage.setItem(user.email, JSON.stringify(user))
+    sessionStorage.setItem(user.nickName, JSON.stringify(user))
+  }
 }
