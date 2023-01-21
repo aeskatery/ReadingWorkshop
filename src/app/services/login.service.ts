@@ -29,7 +29,7 @@ export class LoginService {
       } else {
         // @ts-ignore
         sessionStorage.setItem(this.user.nickName, JSON.stringify(this.user))
-        this.router.navigate(['users', this.user.nickName]);
+        this.router.navigate(['']);
       }
     }
   }

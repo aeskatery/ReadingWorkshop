@@ -1,3 +1,5 @@
+import {IUserAttributes} from "./IUserAttributes";
+
 export interface IUsers {
     username: string;
     userSurname: string;
@@ -7,4 +9,7 @@ export interface IUsers {
     gender: string;
     password: string;
     confirmPassword: string;
+    img: string;
+    desc: string;
+    attributes: IUserAttributes;
 }

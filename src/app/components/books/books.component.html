@@ -1,8 +1,9 @@
-<div *ngFor="let book of books" >
+<app-header></app-header>
+<div class="books" *ngFor="let book of books">
   <i> {{book.nickName}} </i>
   <a routerLink="{{book.id}}"> <h3> {{book.title}} </h3></a>
-  <p> {{book.description}} </p>
-  <img [src]="book.img" alt="Rf">
+  <p>Краткое описание: {{book.description}}</p>
+  <img [src]="book.img" alt="Картинка недоступна">
 
   <hr>
 </div>

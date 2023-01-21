@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {UsersComponent} from "./components/users/users.component";
 import {UserComponent} from "./components/user/user.component";
+import {LogoutComponent} from "./components/logout/logout.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: '**', component: NotfoundComponent},
 ];
 

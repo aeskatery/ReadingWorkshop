@@ -1,60 +1,64 @@
+<app-header></app-header>
 <form (ngSubmit)="addBook()" #form="ngForm">
-  <div class="mb-3, form-floating">
+  <div class="add_field">
     <input
       type="text"
       id="nickName"
       class="form-control"
       name="nickName"
-      aria-describedby="emailHelp"
       placeholder="Автор"
       [(ngModel)]="BookDto.nickName"
       required
       #nickName="ngModel"
     >
-    <label for="nickName" class="form-label">NickName</label>
   </div>
-  <div class="mb-3, form-floating">
+  <div class="add_field">
     <input
       type="text"
       id="title"
       class="form-control"
       name="title"
+      placeholder="Название"
       [(ngModel)]="BookDto.title"
       required
       #title="ngModel"
     >
-    <label for="title" class="form-label">Название</label>
-
   </div>
-  <div class="mb-3, form-floating">
+  <div class="add_field">
     <input
       type="text"
       id="img"
       class="form-control"
       name="img"
+      placeholder="Обложка"
       [(ngModel)]="BookDto.img"
       required
       #img="ngModel"
     >
-    <label for="title" class="form-label">Адрес картинки</label>
   </div>
-  <div class="mb-3, form-floating">
+  <div class="add_field">
     <textarea
       type="text"
       id="description"
       class="form-control"
       name="description"
+      placeholder="Описание"
       [(ngModel)]="BookDto.description"
       required
       #description="ngModel"
-    ></textarea>
-    <label for="description" class="form-label">Описание</label>
+    >
+    </textarea>
   </div>
   <button
-    class="w-100 btn btn-lg btn-primary"
+    class="w-100 btn btn-lg btn-primary button"
     type="submit"
     [disabled]="!form.form.valid"
   >
     Добавить
   </button>
+
+<!--  <div class="add_field">-->
+<!--    <input type="file" oi-file="options">-->
+<!--    <label for="title" class="form-label">Добавить файл</label>-->
+<!--  </div>-->
 </form>
