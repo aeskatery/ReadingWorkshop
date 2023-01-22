@@ -1,6 +1,13 @@
 <app-header></app-header>
+<img
+  class="h200"
+  [src]="imagePreview"
+  *ngIf="imagePreview"
+  alt="Обложка"
+>
 <form (ngSubmit)="addBook()" #form="ngForm">
   <div class="add_field">
+
     <input
       type="text"
       id="nickName"
@@ -25,16 +32,30 @@
     >
   </div>
   <div class="add_field">
+<!--    <input-->
+<!--      type="file"-->
+<!--      id="img"-->
+<!--      class="form-control img-custom"-->
+<!--      name="img"-->
+<!--      placeholder="Обложка"-->
+<!--      [(ngModel)]="BookDto.img"-->
+<!--      required-->
+<!--      #img="ngModel"-->
+<!--    >-->
+
+
     <input
-      type="text"
-      id="img"
-      class="form-control"
-      name="img"
-      placeholder="Обложка"
-      [(ngModel)]="BookDto.img"
-      required
-      #img="ngModel"
+      type="file"
+      class="img-custom"
+      (change)="onFileUpload($event)"
+      #upload
     >
+    <button
+    (click)="triggerClick()"
+    [disabled]="!isLoggedIn || title.value === ''"
+    type="button"
+    class="w-100 btn btn-lg btn-primary button"
+    >Загрузить обложку</button>
   </div>
   <div class="add_field">
     <textarea
@@ -52,11 +73,28 @@
   <button
     class="w-100 btn btn-lg btn-primary button"
     type="submit"
-    [disabled]="!form.form.valid"
+    [disabled]="!form.form.valid || isLoggedIn"
+
   >
     Добавить
   </button>
+  <div class="alert alert-danger" *ngIf="!isLoggedIn">
+    Для добавления книги войдите в систему
+  </div>
 
+  <div class="add_field">
+    <input type="file"
+           class="img-custom"
+           (change)="onFileUpload($event)"
+           #upload
+    >
+    <button
+      (click)="triggerClick()"
+      [disabled]="!isLoggedIn || title.value === ''"
+      type="button"
+      class="w-100 btn btn-lg btn-primary button"
+    >Загрузить текстовый файл</button>
+  </div>
 <!--  <div class="add_field">-->
 <!--    <input type="file" oi-file="options">-->
 <!--    <label for="title" class="form-label">Добавить файл</label>-->
