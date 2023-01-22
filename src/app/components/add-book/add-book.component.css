@@ -6,3 +6,11 @@
 .button {
   margin-top: 20px;
 }
+
+.img-custom {
+  display: none;
+}
+
+.h200 {
+  height: 200px;
+}

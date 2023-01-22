@@ -6,10 +6,10 @@ import { IBookDTO } from "../models/IBookDTO";
 @Injectable({
   providedIn: 'root'
 })
-export class BooksService {
+export class BooksService  {
   book: IBooks | undefined;
 
-  constructor() { }
+  constructor() {}
 
   getBooks(): IBooks[] {
     return books;
@@ -17,6 +17,13 @@ export class BooksService {
 
   getBooksById(id: number): IBooks | undefined {
     return this.getBooks().find(book => book.id === id);
+  }
+
+  addCoverFile(file: File | undefined, title: string) {
+    // @ts-ignore
+    console.log(file.name + title)
+    localStorage.setItem('title', <string>file?.name)
+
   }
 
   addBook(book: IBookDTO) {
