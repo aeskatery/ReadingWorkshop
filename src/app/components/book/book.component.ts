@@ -19,7 +19,7 @@ export class BookComponent implements OnInit {
     description : 'нет описания',
     img : 'нет картинки'
   };
-
+  idBook: string | null = ''
   user: IUsers | undefined;
 
   constructor(private activatedRoute: ActivatedRoute, private location: Location, private bookService: BooksService,
@@ -31,20 +31,29 @@ export class BookComponent implements OnInit {
   }
 
   // @ts-ignore
-  getBook(): void{
+  getBook(): void {
     // @ts-ignore
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.idBook = params.get('id')
+    })
     // @ts-ignore
-    this.bookDetail =  this.bookService.getBooksById(id);
+    this.bookService.getBooksById(this.idBook)
+      .subscribe(book => {
+        // @ts-ignore
+        this.bookDetail = book;
+      });
   }
 
+
   addBookToBookmarksUser(): void {
+    // @ts-ignore
     this.user?.attributes.bookmarks.push(this.bookDetail.title)
     // @ts-ignore
     this.usersService.saveUser(this.user)
   }
 
   addBookToFavoritesUser(): void {
+    // @ts-ignore
     this.user?.attributes.favorites.push(this.bookDetail.title)
     // @ts-ignore
     this.usersService.saveUser(this.user)

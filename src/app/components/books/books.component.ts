@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IBooks } from "../../models/IBooks";
 import { BooksService } from "../../services/books.service";
 
+
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -17,7 +18,13 @@ export class BooksComponent implements OnInit {
   }
 
   getBooks(): void {
-    this.books = this.bookService.getBooks();
+    // @ts-ignore
+    this.bookService.getBooksFromDb()
+      .subscribe(books => {
+      // @ts-ignore
+      this.books = books
+    });
+
   }
 
 }

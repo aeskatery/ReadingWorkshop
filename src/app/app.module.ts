@@ -18,6 +18,7 @@ import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './components/user/user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -39,9 +40,11 @@ import { LogoutComponent } from './components/logout/logout.component';
         BrowserModule,
         AppRoutingModule,
         NgbModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
   providers: [BooksService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [HttpClientModule]
 })
 export class AppModule { }

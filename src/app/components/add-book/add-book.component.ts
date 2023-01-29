@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { IBookDTO } from "../../models/IBookDTO";
 import {BooksService} from "../../services/books.service";
+import {IBookContent} from "../../models/IBookContent";
 
 @Component({
   selector: 'app-add-book',
@@ -14,10 +15,11 @@ export class AddBookComponent implements OnInit {
     description: '',
     img: ''
   };
-  image: File | undefined;
+  bookContent: IBookContent | undefined
   imagePreview: string | ArrayBuffer | null = '';
   isLoggedIn: boolean = false;
   @ViewChild('upload') inputRef: ElementRef | undefined
+  @ViewChild('uploadText') inputRefText: ElementRef | undefined
   constructor(private bookService: BooksService) { }
 
   addBook() {
@@ -29,21 +31,48 @@ export class AddBookComponent implements OnInit {
     this.inputRef?.nativeElement.click()
   }
 
+  triggerClickText() {
+    this.inputRefText?.nativeElement.click()
+  }
+
   onFileUpload(event: any) {
     const file = event.target.files[0]
-    this.image = file;
 
     const reader = new FileReader()
 
+    reader.readAsDataURL(file)
     reader.onload = () => {
       this.imagePreview = reader.result
-      // console.log(this.imagePreview)
+      this.addImageToBook(reader.result)
     }
-    reader.readAsDataURL(file)
-    let title = this.BookDto.title
-    this.bookService.addCoverFile(file, title)
   }
 
+  onFileUploadText(event: any) {
+    const bookFile = event.target.files[0]
+
+    const reader = new FileReader()
+
+    reader.readAsDataURL(bookFile)
+    reader.onload = () => {
+      console.log(reader.result)
+      this.addContextToBook(reader.result)
+    }
+
+  }
+
+  addContextToBook(content: string | ArrayBuffer | null) {
+    if (typeof content === "string") {
+      // @ts-ignore
+      this.bookContent.text = content
+    }
+  }
+
+
+  addImageToBook(pic: string | ArrayBuffer | null) {
+    if (typeof pic === "string") {
+      this.BookDto.img = pic
+    }
+  }
   ngOnInit(): void {
     this.isLoggedIn = sessionStorage.length !== 0;
     // @ts-ignore
