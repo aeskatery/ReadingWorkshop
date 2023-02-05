@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="contanier">
-    <form (ngSubmit)="submitLogin()" #form="ngForm">
-        <div>
+    <form (ngSubmit)="submitLogin()" #form="ngForm" class="my_form">
+        <div class="form-floating">
             <input
             type="email"
             id="email"
@@ -9,10 +9,9 @@
             name="email"
             placeholder="email@email.ru"
             [(ngModel)]="userDto.email"
-            required="email"
             #email="ngModel"
             >
-            <label for="email" class="form-label">Адрес электроной почты</label>
+          <label for="email" class="form-label">Адрес электроной почты</label>
             <div *ngIf="(email.invalid && email.touched) || email.dirty">
                 <div class="alert alert-warning" *ngIf="email.errors?.['required']">
                   Email обязательно
@@ -22,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="form-floating">
             <input
               type="password"
               id="password"
@@ -32,8 +31,7 @@
               required
               #password="ngModel"
             >
-            <label for="password" class="form-label">Пароль</label>
-
+          <label for="password" class="form-label">Пароль</label>
             <div *ngIf="(password.invalid && password.touched) || password.dirty">
               <div class="alert alert-warning" *ngIf="password.errors?.['required']">
                  Пароль обязательно
@@ -45,6 +43,7 @@
         </div>
         <button
         type="submit"
+        class="button_login"
         [disabled]="!form.form.valid"
 
         *ngIf="!isLoggedIn; else loggedIn"

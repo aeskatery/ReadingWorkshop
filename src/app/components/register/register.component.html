@@ -1,6 +1,12 @@
 <app-header></app-header>
 <div class="container">
-  <form (ngSubmit)="onSubmit()" #form="ngForm">
+  <img
+    class="h200"
+    [src]="imagePreview"
+    *ngIf="imagePreview"
+    alt="Обложка"
+  >
+  <form (ngSubmit)="onSubmit()" #form="ngForm" class="my_form">
     <div class="form-floating">
       <input
         type="text"
@@ -125,22 +131,19 @@
       </select>
       <label for="gender" class="form-label" >Пол</label>
     </div>
-
     <div class="form-floating">
+
       <input
-        type="text"
-        id="img"
-        class="form-control"
-        name="userSureName"
-        placeholder="Введите фамилию"
-        [(ngModel)]="user.img"
-        #img="ngModel"
-        required
+        type="file"
+        class="img-custom"
+        (change)="onFileUpload($event)"
+        #upload
       >
-      <label for="img" class="form-label">Картинка</label>
+      <button
+        (click)="triggerClick()"
+        type="button"
+      >Загрузить картинку</button>
     </div>
-
-
-    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    <button type="submit" class="button_register">Зарегистрироваться</button>
   </form>
 </div>

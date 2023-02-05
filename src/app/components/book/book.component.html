@@ -2,7 +2,7 @@
 <div *ngIf="bookDetail">
  <img class="preview" [src]="bookDetail.img" alt="">
  <div><span>Название книги: </span>{{bookDetail.title}}</div>
- <div><span>Автор: </span>{{bookDetail.nickName}}</div>
+  <div><span>Автор: </span><strong>{{bookDetail.nickName}}</strong></div>
  <div><span>О чем книга: </span>{{bookDetail.description}}</div>
 </div>
 <button class="button_add_1" (click)="addBookToBookmarksUser()">Добавить в "Закладки"</button>
@@ -13,11 +13,11 @@
 </div>
 <button *ngIf="bookDetail.comments " class="button_add_2" (click)="showComments()">Показать коментарии</button>
 <button class="button_add_2" (click)="addComments()">Добавить коментарии</button>
-<div class="showComment" *ngIf="showCom">
+<div  *ngIf="showCom">
 
-  <div *ngFor="let com of bookDetail.comments">
-    <p>{{com.date}}</p>
-    <p>{{com.nickname}}</p>
+  <div class="showComment" *ngFor="let com of bookDetail.comments">
+    <p><small>{{com.date | date: 'dd-MM-yyy - hh-mm'}}</small></p>
+    <h3>{{com.nickname}}</h3>
     <p>{{com.textComment}}</p>
   </div>
 </div>

@@ -12,7 +12,7 @@
     <a routerLink="/register" type="button" class="btn btn-primary">Зарегистрироваться</a>
   </div>
   <ng-template  #isLogged class="col-md-5 text-end">
-    <a routerLink="/users/{{username}}" type="button" class="btn btn-outline-primary me-2">Личный кабинет</a>
+    <a routerLink="/users/{{username}}" type="button" class="button_cabinet">Личный кабинет</a>
     <button type="button" class="btn btn-danger" (click)="logout()">Выйти</button>
   </ng-template>
 </header>

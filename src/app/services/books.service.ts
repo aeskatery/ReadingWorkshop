@@ -39,7 +39,6 @@ export class BooksService  {
   }
 
   getBooksById(id: string): Observable<IBookDTO> {
-    console.log('ищем книгу по ид ' + id)
     // @ts-ignore
     return this.httpClient.get<IBookDTO>(this.dbUrl + '/listBooks/' + id + '.json')
       .pipe(map((book) => {

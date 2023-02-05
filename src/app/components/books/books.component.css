@@ -4,6 +4,7 @@
   border-radius: 10px;
 }
 
-.books p {
-
+.title {
+  color: #7fa190;
+  text-decoration: none;
 }

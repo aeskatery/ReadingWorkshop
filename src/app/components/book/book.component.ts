@@ -103,8 +103,6 @@ export class BookComponent implements OnInit {
       this.bookToUp.comments?.push(this.comments)
     } else {
       comment?.push(this.comments)
-      console.log('Новые коменты')
-      console.log(comment)
       // @ts-ignore
       this.bookToUp.comments = comment
       // this.bookToUp.comments?.push(comment)

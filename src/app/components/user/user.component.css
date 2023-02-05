@@ -22,27 +22,39 @@
 }
 
 .button_1 {
-  margin-left: 50px;
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   height: 30px;
-  background-color: white;
+  background-color: #7fa190;
+  margin-left: 10px;
+}
+
+.button_1:hover {
+  color: white;
 }
 
 .button_2 {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   height: 30px;
-  background-color: white;
+  background-color: #7fa190;
   margin-left: 10px;
+}
+
+.button_2:hover {
+  color: white;
 }
 
 .button_3 {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   height: 30px;
-  background-color: white;
+  background-color: #7fa190;
   margin-left: 10px;
+}
+
+.button_3:hover {
+  color: white;
 }
 
 .myBook {
@@ -51,8 +63,20 @@
   border-bottom: black;
 }
 
+.myBook:hover {
+  color: #7fa190;
+}
+
 .bookmark {
   padding-bottom: 10px;
+}
+
+.bookmark:hover {
+  color: #7fa190;
+}
+
+.favorites:hover {
+  color: #7fa190;
 }
 
 li {

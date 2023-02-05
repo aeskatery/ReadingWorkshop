@@ -5,7 +5,7 @@
   *ngIf="imagePreview"
   alt="Обложка"
 >
-<form (ngSubmit)="addBook()" #form="ngForm">
+<form (ngSubmit)="addBook()" #form="ngForm" class="my_form">
   <div class="add_field">
 
     <input
@@ -32,21 +32,6 @@
     >
   </div>
   <div class="add_field">
-
-    <input
-      type="file"
-      class="img-custom"
-      (change)="onFileUpload($event)"
-      #upload
-    >
-    <button
-    (click)="triggerClick()"
-    [disabled]="!isLoggedIn || title.value === ''"
-    type="button"
-    class="w-100 btn btn-lg btn-primary button"
-    >Загрузить обложку</button>
-  </div>
-  <div class="add_field">
     <textarea
       type="text"
       id="description"
@@ -61,6 +46,20 @@
   </div>
 
   <div class="add_field">
+
+    <input
+      type="file"
+      class="img-custom"
+      (change)="onFileUpload($event)"
+      #upload
+    >
+    <button
+      (click)="triggerClick()"
+      [disabled]="!isLoggedIn || title.value === ''"
+      type="button"
+    >Загрузить обложку</button>
+  </div>
+  <div class="add_field">
     <input
     type="file"
     class="img-custom"
@@ -70,12 +69,10 @@
     <button
     (click)="triggerClickText()"
     type="button"
-    class="w-100 btn btn-lg btn-primary button"
     >Загрузить текстовый файл</button>
   </div>
   <div class="add_field">
     <button
-      class="w-100 btn btn-lg btn-primary button"
       type="submit"
       [disabled]="!isLoggedIn"
     >

@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="books" *ngFor="let book of books">
-  <i> {{book.nickName}} </i>
-  <a routerLink="{{book.id}}"> <h3> {{book.title}} </h3></a>
+  <h2> {{book.nickName}} </h2>
+  <a routerLink="{{book.id}}" class="title"> <h3><i> {{book.title}} </i></h3></a>
   <p>Краткое описание: {{book.description}}</p>
   <img [src]="book.img" alt="Картинка недоступна">
 

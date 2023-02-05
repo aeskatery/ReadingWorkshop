@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { IUsers } from 'src/app/models/IUsers';
 import {RegisterService} from "../../services/register.service";
 
@@ -26,6 +26,9 @@ export class RegisterComponent implements OnInit {
       favorites: ['']
     }
   };
+  imagePreview: string | ArrayBuffer | null = '';
+  isLoggedIn: boolean = false;
+  @ViewChild('upload') inputRef: ElementRef | undefined
 
   constructor(private registerService: RegisterService) { }
 
@@ -38,6 +41,28 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.registerService.registerUser(this.user)
+  }
+
+  triggerClick() {
+    this.inputRef?.nativeElement.click()
+  }
+
+  onFileUpload(event: any) {
+    const file = event.target.files[0]
+
+    const reader = new FileReader()
+
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      this.imagePreview = reader.result
+      this.addImageToBook(reader.result)
+    }
+  }
+
+  addImageToBook(pic: string | ArrayBuffer | null) {
+    if (typeof pic === "string") {
+      this.user.img = pic
+    }
   }
 
 }
