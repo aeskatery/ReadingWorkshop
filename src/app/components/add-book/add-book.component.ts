@@ -9,11 +9,14 @@ import {IBookContent} from "../../models/IBookContent";
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
+
   BookDto: IBookDTO = {
     nickName: '',
     title: '',
     description: '',
-    img: ''
+    img: '',
+    // @ts-ignore
+    content: FileReader
   };
   bookContent: IBookContent | undefined
   imagePreview: string | ArrayBuffer | null = '';
@@ -51,11 +54,11 @@ export class AddBookComponent implements OnInit {
     const bookFile = event.target.files[0]
 
     const reader = new FileReader()
-
-    reader.readAsDataURL(bookFile)
+    reader.readAsText(bookFile)
     reader.onload = () => {
-      console.log(reader.result)
-      this.addContextToBook(reader.result)
+      // console.log(reader.result)
+      // @ts-ignore
+      this.BookDto.content = reader.result
     }
 
   }

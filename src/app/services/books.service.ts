@@ -15,6 +15,8 @@ export class BooksService  {
 
   books: IBooks[] = []
 
+  bookDetail: IBookDTO | undefined;
+
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   getBooks(): IBooks[] {
@@ -54,9 +56,15 @@ export class BooksService  {
   }
 
   // @ts-ignore
-  addBookToFirebase(b: IBookDTO) : Observable<IBookDTO> {
+  addBookToFirebase(book: IBookDTO) : Observable<IBookDTO> {
     console.log('Load book to base ' + this.dbUrl)
     // @ts-ignore
-    return this.httpClient.post<IBooks>(this.dbUrl + '/listBooks.json', b)
+    return this.httpClient.post<IBooks>(this.dbUrl + '/listBooks.json', book)
+  }
+
+  updateBook(bookUp: IBookDTO, idBook: string | null) {
+    this.httpClient.put<IBookDTO>(this.dbUrl + '/listBooks/' + idBook + '.json', bookUp).subscribe(() => {
+      this.router.navigate(['books'])
+    })
   }
 }

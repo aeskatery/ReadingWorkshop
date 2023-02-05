@@ -7,3 +7,33 @@
 </div>
 <button class="button_add_1" (click)="addBookToBookmarksUser()">Добавить в "Закладки"</button>
 <button class="button_add_2" (click)="addBookToFavoritesUser()">Добавить в "Избранное"</button>
+<button *ngIf="bookDetail.content" class="button_add_2" (click)="readBook = !readBook">Читать</button>
+<div *ngIf="readBook">
+  {{bookDetail.content}}
+</div>
+<button *ngIf="bookDetail.comments " class="button_add_2" (click)="showComments()">Показать коментарии</button>
+<button class="button_add_2" (click)="addComments()">Добавить коментарии</button>
+<div class="showComment" *ngIf="showCom">
+
+  <div *ngFor="let com of bookDetail.comments">
+    <p>{{com.date}}</p>
+    <p>{{com.nickname}}</p>
+    <p>{{com.textComment}}</p>
+  </div>
+</div>
+<div class="comment" *ngIf="showAddComment">
+  <form>
+    <textarea
+      id="textComment"
+      name="textComment"
+      placeholder="Оставьте комментарий"
+      [(ngModel)]="comments.textComment"
+      required
+      #nickName="ngModel"
+      class="form-control" rows="3">
+
+    </textarea>
+    <button class="button_add_2" (click)="saveComment()">Сохранить</button>
+  </form>
+</div>
+
